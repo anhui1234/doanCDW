@@ -1,0 +1,80 @@
+.search-box{
+    position: absolute;
+    top: 35%;
+    left: 60%;
+    border-radius: 40px;
+    line-height: 30px;
+    background: white;
+    
+}
+
+.search-txt{
+    
+    background: none;
+    font-size: 16px;
+    width: 160px;
+    transition: 0.4s;
+}
+.footer{
+    width: 100%;
+    
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    align-items: center;
+    margin-top: 30px;
+}
+.footer img{
+    width: 10%;
+    height: 18%;
+    justify-content: center;
+}
+.te{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    color: black;
+    line-height: 1.15;
+}
+#wrapper{
+    max-width: 1170px;
+    margin: 0 auto;
+}
+.products{
+ list-style: none;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+}
+.products li{
+    flex-basis: 25%;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+.products li img{
+    width: 80%;
+    height: 250px;
+    
+}
+.product-info a{
+    display: block;
+    text-decoration: none;
+}
+.product-card{
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #9e9e9e;
+    padding: 3px 0px;
+}
+.product-name{
+    color: black;
+    padding: 3px 0px;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Thêm sản phẩm</title>
+	<base href="/">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.0/css/all.min.css" rel="stylesheet">
+	<!-- Latest compiled and minified CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styleProduct.css">
+	<link rel="stylesheet" type="text/css" href="css/styleProductAdd.css">
+</head>
+
+<body>
+	<!--header-->
+	<header>
+		<nav class="navbar navbar-expand-sm bg-light navbar-light">
+			<div class="container-fluid">
+				<a href="#"><img src="logoImage\Logo.png" class="rounded-circle" alt="Cinque Terre"
+						style="height:30%;width:30%;margin-left: 100px;"></a>
+				<div class="collapse navbar-collapse" id="mynavbar">
+					<ul class="navbar-nav me-auto" style="margin-left:100px ;">
+						<li class="nav-item">
+							<a class="nav-link">Trang chủ</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" th:href="@{/productAdmin}">Sản phẩm</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="">Giới thiệu</a>
+						</li>
+						<div class="search-box">
+							<form th:action="@{/search}">
+								<input class="search-txt" type="text" placeholder="Tìm kiếm sản phẩm" name="name"
+									th:value="${name}">
+								<button class="search-btn">
+									<i class="fas fa-search"></i>
+								</button>
+							</form>
+						</div>
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!--body-->
+	<div class="sign_up">
+
+		<form class="sign" th:action="${ACTION}" th:object="${PRODUCTDTO}" method="post" enctype="multipart/form-data"
+		>
+			<div class="formtitle">Thêm Sản Phẩm</div>
+
+			<div class="top_section">
+				<div class="section">
+					<div class="input name">
+						<input type="text" placeholder="id" th:field="*{id_Product}" id="idsp" />
+					</div>
+					<div class="input name">
+						<input type="text" placeholder="Tên" th:field="*{name_Product}" id="name"/>
+					</div>
+					<div class="select-food">
+						<select th:field="*{categoryId}" class="frm-field required" id="ca" >
+							<option th:each="category:${CATEGORYS}" th:value="${category.id_category}"
+								th:text="${category.name_Category}"></option>
+
+						</select>
+					</div>
+					<div class="mo-ta">
+						<label>Mô tả</label> <textarea rows="15" cols="25" th:field="*{content}" id="noidung"></textarea>
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="bottom-section">
+				<div class="title">Thêm hình ảnh</div>
+				<div class="section">
+					<div class="img-pre" id="img-pre">
+						<img src="" alt="" class="img-pre__img">
+						<span class="img-pre-text">Image preview</span>
+					</div>
+
+					<input type="file" th:field="*{photo}" name="input" id="inputFile" style="margin-top:15px;">
+					<!-- <div class="clear"> </div> -->
+				</div>
+				<div class="submit">
+					<input class="bluebutton submitbotton" type="submit" value="Thêm" />
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+	<!--Footer-->
+	<footer>
+		<div class='footer'>
+			<img src="logoImage/Logo.png">
+			<div class='te'>
+				Người thực hiện: Huỳnh Ngọc Hiếu Quang & Tuấn
+			</div>
+		</div>
+	</footer>
+	<script type="text/javascript">
+	
+	</script>
+	<script>
+		const inputFile = document.getElementById("inputFile");
+		const previewContainer = document.getElementById("img-pre");
+		const previewImage = document.querySelector(".img-pre__img");
+		const previewText = document.querySelector(".img-pre-text");
+
+		inputFile.addEventListener("change", function () {
+			const file = this.files[0];
+			console.log(file);
+			if (file) {
+				const reader = new FileReader();
+				previewText.style.display = "none";
+				previewImage.style.display = "block";
+
+				reader.addEventListener("load", function () {
+					console.log(this);
+					previewImage.setAttribute("src", this.result);
+				});
+
+				reader.readAsDataURL(file);
+
+			}
+		})
+	</script>
+	
+</body>
+
+</html>
